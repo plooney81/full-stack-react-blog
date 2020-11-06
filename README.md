@@ -12,6 +12,7 @@
 ## Lessons Learned
 * REST API basics
 * Implementation of Sequelize to handle SQL queries
+* Refamiliarized with CRUD API operations and the respective Sequelize methods to handle them in the Database.
 
 
 ## Technology Used

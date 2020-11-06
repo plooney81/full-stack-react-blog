@@ -9,12 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       author: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       content: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       approved: {
+        allowNull: false,
+        defaultValue: false,
         type: Sequelize.BOOLEAN
       },
       PostId: {

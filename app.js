@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const apiPostsRouter = require('./routes/api-posts');
+const apiCommentsRouter = require('./routes/api-comments');
 
 var app = express();
 
@@ -16,5 +17,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // good naming nomenclature with the version numbers, that way if you come out with a version two
 // the users still refering to v1 won't break their apps.
 app.use('/api/v1/posts', apiPostsRouter);
+app.use('/api/v1/comments', apiCommentsRouter);
 
-module.exports = app;
+module.exports = app

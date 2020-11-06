@@ -15,12 +15,16 @@ module.exports = (sequelize, DataTypes) => {
   };
   Comment.init({
     author: {
+      allowNull: false,
       type: DataTypes.STRING
     },
     content: {
+      allowNull: false,
       type: DataTypes.TEXT
     },
     approved: {
+      allowNull: false,
+      defaultValue: false,
       type: DataTypes.BOOLEAN
     }
   }, {

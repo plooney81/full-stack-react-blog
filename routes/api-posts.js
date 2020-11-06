@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const models = require('../models');
 
 // Get ALL POSTS
@@ -41,7 +41,7 @@ router.patch('/:id', (req, res) => {
         }
     })
         .then(updated => {
-            (updated && updated[0] > 0) ? res.status(202).json(updated) : res.status(404).json({error: 'Post not found'})
+            (updated && updated[0] > 0) ? res.status(202).json({Success: 'Post updated'}): res.status(404).json({error: 'Post not found'})
         })
         .catch(e => {
             res.status(500).json({
