@@ -1,0 +1,20 @@
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+
+const apiPostsRouter = require('./routes/api-posts');
+
+var app = express();
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// good naming nomenclature with the version numbers, that way if you come out with a version two
+// the users still refering to v1 won't break their apps.
+app.use('/api/v1/posts', apiPostsRouter);
+
+module.exports = app;
