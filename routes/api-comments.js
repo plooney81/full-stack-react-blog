@@ -14,7 +14,10 @@ router.get('/:id', (req, res) => {
             if(!post){
                 res.status(404).json({error: 'Post not found'});
             }
-            post.getComments()
+            post.getComments({
+                order: [
+                    ['createdAt', 'ASC'],
+                ]})
                 .then(comments => {
                     res.json(comments);
                 })

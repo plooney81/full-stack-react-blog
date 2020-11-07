@@ -4,7 +4,9 @@ const models = require('../models');
 
 // Get ALL POSTS
 router.get('/', (req, res) => {
-    models.Post.findAll()
+    models.Post.findAll({order: [
+        ['published', 'ASC'],
+    ]})
         .then(posts => {
             res.json(posts)
         })
