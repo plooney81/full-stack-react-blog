@@ -69,9 +69,7 @@ router.post('/', (req, res) => {
         published: published,
     })
         .then((post)=>{
-            res.status(201).json({
-                success: 'New post created'
-            })
+            res.status(201).json(post)
         })
         .catch((e)=>{
             res.status(500).json({

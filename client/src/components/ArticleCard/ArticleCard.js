@@ -24,7 +24,11 @@ export default function ArticleCard(props) {
     }, [])
 
     const deletePost = () => {
-        fetch(``)
+        fetch(`/api/v1/posts/${id}`, {
+            method: "DELETE",
+        })
+            .then(res => res.status === 200 ? console.log('Post deleted') : console.log('Post not deleted'))
+            .catch(error => console.log(error))
     }
     return (
         <>
@@ -51,7 +55,7 @@ export default function ArticleCard(props) {
                             </span>
                             <span className="mr-4">|</span>
                             <span className="timeCreated">
-                                {timeCreated.getDay()}/
+                                {timeCreated.getDate()}/
                                 {timeCreated.getMonth()}/
                                 {timeCreated.getFullYear()}
                             </span>

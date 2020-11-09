@@ -16,7 +16,7 @@ router.get('/:id', (req, res) => {
             }
             post.getComments({
                 order: [
-                    ['createdAt', 'ASC'],
+                    ['createdAt', 'DESC'],
                 ]})
                 .then(comments => {
                     res.json(comments);

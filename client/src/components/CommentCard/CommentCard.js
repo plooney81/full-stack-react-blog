@@ -2,13 +2,15 @@ import React from 'react';
 
 import {Card} from 'react-bootstrap';
 
+import './CommentCard.css';
+
 export default function CommentCard(props) {
     const { id, author, content, createdAt, approved } = props.commentData
     const timeCreated = new Date(createdAt);
 
     return (
         <Card className="mt-4">
-            <Card.Body className="d-flex flex-column">
+            <Card.Body className="d-flex flex-column comment-body">
                 <Card.Text className="p-1">
                     {content}
                 </Card.Text>
@@ -20,7 +22,7 @@ export default function CommentCard(props) {
                         </span>
                         <span className="mr-4">|</span>
                         <span className="timeCreated">
-                            {timeCreated.getDay()}/
+                            {timeCreated.getDate()}/
                             {timeCreated.getMonth()}/
                             {timeCreated.getFullYear()}
                         </span>

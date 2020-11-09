@@ -49,3 +49,5 @@ app.use(cors({
 2. Set up the routes for inspecting a particular article/post ( will have a comments section for users to read all comments/add a new comment)
 3. Set up the new post page so users can add a new article/post
 4. General beautification
+5. Get date instead of get day
+6. Change colors of the modal form to add a new post

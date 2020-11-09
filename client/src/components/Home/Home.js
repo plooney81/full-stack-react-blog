@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap';
 
 import NavigationBar from '../NavigationBar/NavigationBar';
 import ArticleCard from '../ArticleCard/ArticleCard';
+import ArticleForm from '../ArticleForm/ArticleForm';
 
 
 
@@ -25,6 +26,7 @@ export default function Home() {
         <>
             <NavigationBar></NavigationBar>
             <Container>
+                <ArticleForm setPosts={setPosts} posts={posts}></ArticleForm>
                 {posts.map(post => {
                     return <ArticleCard key={post.id} postData={post}></ArticleCard>
                 })}
