@@ -20,13 +20,13 @@ export default function Article() {
     const {articleId} = useParams();
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:3000/api/v1/comments/${articleId}`)
+        fetch(`/api/v1/comments/${articleId}`)
             .then(res => res.json())
             .then(data => {
                 setComments(data)
             })
             .catch(error => console.log(error))
-        fetch(`http://127.0.0.1:3000/api/v1/posts/${articleId}`)
+        fetch(`/api/v1/posts/${articleId}`)
             .then(res => res.json())
             .then(data => {
                 setPosts(data)

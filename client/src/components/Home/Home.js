@@ -14,7 +14,7 @@ export default function Home() {
 
     //! Get all posts when page first loads
     useEffect(() => {
-        fetch(`http://127.0.0.1:3000/api/v1/posts`)
+        fetch(`/api/v1/posts`)
             .then(res => res.json())
             .then(data => {
                 setPosts(data)

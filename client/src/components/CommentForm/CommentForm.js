@@ -13,7 +13,7 @@ export default function CommentForm(props) {
 
     const postNewComment = (event) => {
         event.preventDefault();
-        fetch(`http://127.0.0.1:3000/api/v1/comments/${id}`, {
+        fetch(`/api/v1/comments/${id}`, {
             method: "POST",
             headers: {
                 Accept: "application/json",
