@@ -13,6 +13,13 @@
 * REST API basics
 * Implementation of Sequelize to handle SQL queries
 * Refamiliarized with CRUD API operations and the respective Sequelize methods to handle those operations in the Database.
+* How to use the CORS middleware package to enable different cors options. 
+```JavaScript
+const cors = require('cors');
+app.use(cors({
+    origin: 'http://localhost:3001'
+}));
+```
 
 
 ## Technology Used
