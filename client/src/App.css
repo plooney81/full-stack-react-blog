@@ -1,0 +1,16 @@
+:root {
+  --lightShades: #F3F7F4;
+  --lightAccent: #868ca1;
+  --mainBrandColor: #995744;
+  --darkAccent: #b84154;
+  --darkShades: #211520;
+}
+
+html {
+  background-color: var(--darkShades);
+}
+
+.App {
+  height: 100%;
+  background-color: var(--darkShades);
+}

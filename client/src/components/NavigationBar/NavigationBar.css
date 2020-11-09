@@ -1,0 +1,11 @@
+.navbar {
+    background-color: var(--lightAccent);
+  }
+  
+.navbar-nav a {
+    color: var(--lightShades)!important;
+}
+
+.navbar-brand{
+    color: var(--mainBrandColor)!important;
+}
