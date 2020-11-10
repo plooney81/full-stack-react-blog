@@ -22,8 +22,8 @@ export default function CommentCard(props) {
                         </span>
                         <span className="mr-4">|</span>
                         <span className="timeCreated">
-                            {timeCreated.getDate()}/
                             {timeCreated.getMonth()}/
+                            {timeCreated.getDate()}/
                             {timeCreated.getFullYear()}
                         </span>
                     </div>
