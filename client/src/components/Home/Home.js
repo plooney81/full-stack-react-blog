@@ -22,11 +22,18 @@ export default function Home() {
             })
             .catch(error => console.log(error))
     }, [])
+
+    const addPost = (post) => {
+        const postsCopy = [...posts]
+        postsCopy.unshift(post);
+        setPosts(postsCopy)
+    }
+
     return (
         <>
             <NavigationBar></NavigationBar>
             <Container>
-                <ArticleForm setPosts={setPosts} posts={posts}></ArticleForm>
+                <ArticleForm addPost={addPost}></ArticleForm>
                 {posts.map(post => {
                     return <ArticleCard key={post.id} postData={post}></ArticleCard>
                 })}

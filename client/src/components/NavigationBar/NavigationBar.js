@@ -20,15 +20,10 @@ export default function NavigationBar() {
                             </NavLink>
                         </Nav.Link>
                         {/* <Nav.Link>
-                            <NavLink to="/articles">
-                                Articles
-                            </NavLink>
-                        </Nav.Link> */}
-                        <Nav.Link>
                             <NavLink to="/publish">
                                 Publish
                             </NavLink>
-                        </Nav.Link>
+                        </Nav.Link> */}
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

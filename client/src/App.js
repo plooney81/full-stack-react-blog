@@ -14,8 +14,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Route exact path="/" component={Home}></Route>
-        {/* <Route exact path="/articles" component={Articles}></Route>
-        <Route exact path="/publish" component={Publish}></Route> */}
+        {/* <Route exact path="/publish" component={Publish}></Route> */}
         <Route path="/article/detail/:articleId" component={Article}></Route>
         <Route>
           <Redirect to="/" />

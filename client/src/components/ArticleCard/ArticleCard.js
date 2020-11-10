@@ -13,6 +13,7 @@ export default function ArticleCard(props) {
     const timeCreated = new Date(createdAt);
     const [comments, setComments] = useState([]);
 
+
     useEffect(() => {
         fetch(`/api/v1/comments/${id}`)
             .then(res => res.json())
@@ -29,6 +30,14 @@ export default function ArticleCard(props) {
         })
             .then(res => res.status === 200 ? console.log('Post deleted') : console.log('Post not deleted'))
             .catch(error => console.log(error))
+    }
+
+    const numberOfComments = () =>{
+        if(props.commentsLength){
+            return props.commentsLength.length
+        }else{
+            return comments.length
+        }
     }
     return (
         <>
@@ -62,7 +71,7 @@ export default function ArticleCard(props) {
                         </div>
                         <span className="ml-5">
                             <i class="far fa-comment mr-2"></i>
-                            {comments.length > 0 ? comments.length : ''}
+                            {numberOfComments() > 0 ? numberOfComments() : ''}
                         </span>
                     </div>
                 </Card.Body>

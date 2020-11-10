@@ -60,7 +60,7 @@ export default function Article() {
                 {posts !== null && comments !== null
                 ? ( 
                     <>
-                    <ArticleCard postData={posts} del={true}></ArticleCard>
+                    <ArticleCard postData={posts} del={true} commentsLength={comments}></ArticleCard>
                     <CommentForm postData={posts} comments={comments} setComments={setComments}></CommentForm>
                         {comments.map(comment => <CommentCard key={comment.id} commentData={comment} comments={comments} setComments={setComments}></CommentCard>)}
                     </>

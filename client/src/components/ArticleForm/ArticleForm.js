@@ -7,7 +7,7 @@ export default function ArticleForm(props) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [published, setPublished] = useState('');
-    const {setPosts, posts} = props;
+    const {addPost} = props;
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -34,12 +34,7 @@ export default function ArticleForm(props) {
                 if(res.status === 201){
                     return res.json();
                 }})
-            .then(data => {
-                const postsCopy = [...posts]
-                postsCopy.unshift(data);
-                handleClose()
-                setPosts(postsCopy)
-            })
+            .then(data => addPost(data))
             .catch(error => console.log(error))
     }
     
