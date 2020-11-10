@@ -9,7 +9,7 @@ import './ArticleCard.css';
 
 export default function ArticleCard(props) {
     const { id, title, author, content, createdAt, published } = props.postData
-    const del = props.del
+    const {del, delPost} = props
     const timeCreated = new Date(createdAt);
     const [comments, setComments] = useState([]);
 
@@ -21,14 +21,15 @@ export default function ArticleCard(props) {
                 setComments(data)
             })
             .catch(error => console.log(error))
-        console.log(props.postData.id)
     }, [])
 
     const deletePost = () => {
         fetch(`/api/v1/posts/${id}`, {
             method: "DELETE",
         })
-            .then(res => res.status === 200 ? console.log('Post deleted') : console.log('Post not deleted'))
+        // ! delPost was passed down as a prop from Home.js
+        // * We pass it the id of the post we want to be deleted
+            .then(res => delPost(id))
             .catch(error => console.log(error))
     }
 
@@ -41,12 +42,11 @@ export default function ArticleCard(props) {
     }
     return (
         <>
-        <Link to={`article/detail/${id}`}>
             <Card className="mt-4">
                 <Card.Header className="cardTitle d-flex justify-content-between">
                     <div>
                         <i class="fas fa-newspaper mr-3"></i>
-                        {title}
+                        <Link to={`article/detail/${id}`}>{title}</Link>
                     </div>
                     <div>
                         {del ? <Button className="delete-button" onClick={deletePost}>Delete</Button> : ''}
@@ -76,7 +76,6 @@ export default function ArticleCard(props) {
                     </div>
                 </Card.Body>
             </Card>
-        </Link>
         </>
     )
 }

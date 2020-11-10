@@ -34,7 +34,10 @@ export default function ArticleForm(props) {
                 if(res.status === 201){
                     return res.json();
                 }})
-            .then(data => addPost(data))
+            .then(data => {
+                addPost(data)
+                handleClose()
+            })
             .catch(error => console.log(error))
     }
     

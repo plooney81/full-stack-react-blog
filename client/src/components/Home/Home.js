@@ -32,6 +32,11 @@ export default function Home(props) {
         setPosts(postsCopy)
     }
 
+    const delPost = (postIdToDel) => {
+        const newArray = posts.filter(post => post.id !== postIdToDel);
+        setPosts(newArray);
+    }
+
     return (
         <>
             <NavigationBar></NavigationBar>
@@ -44,9 +49,12 @@ export default function Home(props) {
             )}
             {login.status && (
                 <>
+                    <div className="d-flex justify-content-center mt-3">
+                        <Button onClick={()=>{changeLogin(false, null)}}>Logout</Button>
+                    </div>
                     <ArticleForm addPost={addPost}></ArticleForm>
                     {posts.map(post => {
-                        return <ArticleCard key={post.id} postData={post}></ArticleCard>
+                        return login.account === 'admin' ? <ArticleCard key={post.id} postData={post} del={true} delPost={delPost}></ArticleCard> : <ArticleCard key={post.id} postData={post}></ArticleCard>
                     })}
                 </>
             )}

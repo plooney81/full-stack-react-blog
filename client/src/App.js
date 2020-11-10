@@ -15,7 +15,7 @@ function App() {
   //TODO  2.Account - normal or admin --> if an admin, they will have special access
   const [login, setLogin] = useState({
     "status": false,
-    "type": null
+    "account": null
   });
 
   const changeLogin = (bool, type) => {
@@ -33,7 +33,9 @@ function App() {
         </Route>
         {/* <Route exact path="/publish" component={Publish}></Route> */}
         {login.status && (
-          <Route path="/article/detail/:articleId" component={Article}></Route>
+          <Route path="/article/detail/:articleId">
+            <Article login={login}></Article>
+          </Route>
         )}
         <Route>
           <Redirect to="/" />

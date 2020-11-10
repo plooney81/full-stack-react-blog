@@ -14,10 +14,11 @@ import CommentCard from '../CommentCard/CommentCard';
 import './Article.css';
 
 
-export default function Article() {
+export default function Article(props) {
     const [posts, setPosts] = useState(null);
     const [comments, setComments] = useState(null);
     const {articleId} = useParams();
+    const {login} = props;
 
     useEffect(() => {
         fetch(`/api/v1/comments/${articleId}`)
@@ -25,14 +26,12 @@ export default function Article() {
             .then(data => {
                 setComments([]);
                 setComments(data)
-                console.log(comments)
             })
             .catch(error => console.log(error))
         fetch(`/api/v1/posts/${articleId}`)
             .then(res => res.json())
             .then(data => {
                 setPosts(data)
-                console.log(posts)
             })
             .catch(error => console.log(error))
         //! getting an error for line 37 that says "React Hook useEffect has missing dependencies: 'articleId', 'comments', and 'posts'"
@@ -44,6 +43,11 @@ export default function Article() {
         //! ALSO: NEED TO WAY TO UPDATE THE COMMENTS WHEN A USER ADDS A COMMENT
         // TODO: Pass a prop function down to the comment that it can call whenever a new comment is called.
     }, [])
+
+    const delComment = (commentId) => {
+        const newArray = comments.filter(comment => comment.id !== commentId);
+        setComments(newArray);
+    }
 
     if(!posts){
         return (
@@ -60,9 +64,9 @@ export default function Article() {
                 {posts !== null && comments !== null
                 ? ( 
                     <>
-                    <ArticleCard postData={posts} del={true} commentsLength={comments}></ArticleCard>
+                    <ArticleCard postData={posts} commentsLength={comments}></ArticleCard>
                     <CommentForm postData={posts} comments={comments} setComments={setComments}></CommentForm>
-                        {comments.map(comment => <CommentCard key={comment.id} commentData={comment} comments={comments} setComments={setComments}></CommentCard>)}
+                        {comments.map(comment => <CommentCard key={comment.id} commentData={comment} comments={comments} delComment={delComment} setComments={setComments} login={login}></CommentCard>)}
                     </>
                 )
                 :''}

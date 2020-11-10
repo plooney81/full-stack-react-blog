@@ -87,7 +87,7 @@ router.delete('/:id', (req, res) => {
         }
     })
         .then(deletedPost => {
-            deletedPost[0] === 1 ? res.status(202).json({Success: 'Post deleted'}) : res.status(404).json({error: 'Post not found'})
+            deletedPost === 1 ? res.status(202).json({Success: 'Post deleted'}) : res.status(404).json({error: 'Post not found'})
         })
 })
 
