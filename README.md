@@ -43,6 +43,15 @@ app.use(cors({
     origin: 'http://localhost:3001'
 }));
 ```
+* How to pass state variables/change functions to child components as props.
+  * The Comments/setComments are pieces of state
+```JSX
+{comments.map(comment => <CommentCard key={comment.id} commentData={comment} comments={comments} setComments={setComments}></CommentCard>)}
+```
+  * Then inside the CommentCard component, the following is used to access these variables/function 
+```JavaScript
+const {comments, setComments} = props;
+```
 
 ## **Still Todo**
 1. Continue rendering the homepage.
