@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 
 import NavigationBar from '../NavigationBar/NavigationBar';
 import ArticleCard from '../ArticleCard/ArticleCard';
@@ -9,7 +9,10 @@ import ArticleForm from '../ArticleForm/ArticleForm';
 
 
 
-export default function Home() {
+export default function Home(props) {
+    //! Grab the variables/functions we sent as props
+    const {changeLogin, login} = props;
+
     //! Initialize state variables
     const [posts, setPosts] = useState([]);
 
@@ -33,10 +36,20 @@ export default function Home() {
         <>
             <NavigationBar></NavigationBar>
             <Container>
-                <ArticleForm addPost={addPost}></ArticleForm>
-                {posts.map(post => {
-                    return <ArticleCard key={post.id} postData={post}></ArticleCard>
-                })}
+            {!login.status && (
+                <div className="d-flex justify-content-around mt-3">
+                    <Button onClick={()=>{changeLogin(true, 'admin')}}>Admin Login</Button>
+                    <Button onClick={()=>{changeLogin(true, 'normal')}}>Normal Login</Button>
+                </div>
+            )}
+            {login.status && (
+                <>
+                    <ArticleForm addPost={addPost}></ArticleForm>
+                    {posts.map(post => {
+                        return <ArticleCard key={post.id} postData={post}></ArticleCard>
+                    })}
+                </>
+            )}
             </Container>
         </>
     )
