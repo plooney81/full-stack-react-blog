@@ -37,12 +37,16 @@ export default function CommentForm(props) {
                 } 
             })
             .then(data => {
-                console.log(data.comment)
-                console.log(comments);
+                // Creates a copy of the current list of comments
                 const commentsCopy = [...comments];
+                // The reponse from the server is an object, so we grab the comment portion of the object
+                // And then add that comment to the front of our comment state var that was passed down to
+                // this component as a prop.
                 commentsCopy.unshift(data.comment);
-                console.log(commentsCopy)
+                // Save the copy of the comments array to the state using the setComments function that was
+                // passed down via prop.
                 setComments(commentsCopy)
+                
             })
             .catch(error => console.log(error))
     }
