@@ -14,3 +14,8 @@ html {
   height: 100%;
   background-color: var(--darkShades);
 }
+
+a {
+  text-decoration: none;
+  color: var(--darkShades)!important;
+}

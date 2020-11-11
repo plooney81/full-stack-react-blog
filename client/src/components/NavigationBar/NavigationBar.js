@@ -10,7 +10,7 @@ export default function NavigationBar() {
     return (
         <div>
             <Navbar expand="lg">
-                <Navbar.Brand href="#home"><span>React Blog</span></Navbar.Brand>
+                <Navbar.Brand><span><NavLink to="/">React Blog</NavLink></span></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

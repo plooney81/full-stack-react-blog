@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {Button, Modal, Form} from 'react-bootstrap';
 
+import './ArticleForm.css';
+
 export default function ArticleForm(props) {
     const [show, setShow] = useState(false);
     const [author, setAuthor] = useState('');

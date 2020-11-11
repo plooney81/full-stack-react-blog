@@ -7,6 +7,8 @@ import {Card, Button} from 'react-bootstrap';
 
 import './ArticleCard.css';
 
+import ReadTimeCalculator from '../../lib/ReadTimeCalculator';
+
 export default function ArticleCard(props) {
     const { id, title, author, content, createdAt, published } = props.postData
     const {del, delPost} = props
@@ -63,10 +65,14 @@ export default function ArticleCard(props) {
                                 {author}
                             </span>
                             <span className="mr-4">|</span>
-                            <span className="timeCreated">
+                            <span className="timeCreated mr-4">
                                 {timeCreated.getMonth()}/
                                 {timeCreated.getDate()}/
                                 {timeCreated.getFullYear()}
+                            </span>
+                            <span className="mr-4">|</span>
+                            <span className="timeCreated">
+                                {ReadTimeCalculator(content)}
                             </span>
                         </div>
                         <span className="ml-5">

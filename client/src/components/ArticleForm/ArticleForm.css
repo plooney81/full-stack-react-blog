@@ -1,0 +1,7 @@
+.modal-content {
+    background-color: var(--lightAccent);
+}
+
+.modal-header {
+    color: var(--darkAccent)
+}
