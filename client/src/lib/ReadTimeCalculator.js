@@ -3,7 +3,9 @@
 const ReadTimeCalculator = (string) => {
     //? first we split the string on spaces, whitespace, periods, and commas
     //? Then we filter out any empty matches
-    const words = string.split(/[\s.,]/g).filter(Boolean).length;
+    // * const words = string.split(/[\s.,]/g).filter(Boolean).length;
+    // ? Alternatively, returns an array of words from the string
+    const words = string.match(/\w+/g).length
     const divideToString = (words/225).toString().split('.');
     const [min, seconds] = [parseInt(divideToString[0], 10), Math.ceil(("0." + divideToString[1]) * 60)];
     
