@@ -52,11 +52,36 @@ app.use(cors({
 ```JavaScript
 const {comments, setComments} = props;
 ```
+* Created an estimated reading time function that is then called for the article details.
+```JavaScript
+//! A function that returns the time it will take for an average person to read the content
+//? For non-technical material, the average reading time (in words per minute) is 200 to 250.
+const ReadTimeCalculator = (string) => {
+    //? first we split the string on spaces, new line characters, tabs, periods, and commas
+    //? Then we filter out any empty strings.
+    const words = string.split(/[ \n\t.,]/g).filter(word => word !== "").length;
+    const divideToString = (words/225).toString().split('.');
+    const [min, seconds] = [parseInt(divideToString[0], 10), Math.ceil(("0." + divideToString[1]) * 60)];
+    
+    if (min > 1){
+        if (seconds > 1){
+            return `${min} minutes and ${seconds} seconds`
+        }else {
+            return `${min} minutes and ${seconds} second`
+        }
+    }else{
+        if(seconds > 1){
+            return `${min} minute and ${seconds} seconds`
+        }else {
+            return `${min} minute and ${seconds} second`
+        }
+    }
+}
+
+export default ReadTimeCalculator;
+```
 
 ## **Still Todo**
-1. Continue rendering the homepage.
-2. Set up the routes for inspecting a particular article/post ( will have a comments section for users to read all comments/add a new comment)
-3. Set up the new post page so users can add a new article/post
-4. General beautification
-5. Get date instead of get day
-6. Change colors of the modal form to add a new post
+1. Approve comments if admin
+2. edit posts if admin
+3. edit comments if admin
